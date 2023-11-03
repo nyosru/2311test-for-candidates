@@ -47,8 +47,7 @@ class PriceCalculatorController extends AbstractController
         $entityManager->persist($yourEntity); // Помечаем сущность как "готовую к сохранению"
         $entityManager->flush(); // Сохраняем сущность в базу данных
 
-
-
+        //dd($yourEntity);
 
         return $this->json([
             'message' => 'Welcome to your new controller!',
