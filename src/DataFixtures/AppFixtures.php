@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Coupon;
 use App\Entity\Nalogi;
+use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -14,8 +15,34 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
+        $this->fixNalog($manager);
+        $this->fixCupon($manager);
+        $this->fixProduct($manager);
 
+    }
 
+    /**
+     * Добавляем продукты
+     * @param ObjectManager $manager
+     * @return void
+     */
+    function fixProduct(ObjectManager $manager): void
+    {
+        for ($e = 1; $e <= 10; $e++) {
+            $entity = new Product();
+            $entity->setName('product' . $e);
+            $entity->setPrice(rand(10, 5000));
+            $manager->persist($entity);
+            $manager->flush();
+        }
+    }
+
+    /**
+     * @param ObjectManager $manager
+     * @return void
+     */
+    function fixNalog(ObjectManager $manager): void
+    {
 
         $new_nalog = [
             ['Германия', 19, 'DE', '{.*}'],
@@ -35,8 +62,14 @@ class AppFixtures extends Fixture
         }
 //        $manager->flush();
 
+    }
 
-
+    /**
+     * @param ObjectManager $manager
+     * @return void
+     */
+    function fixCupon(ObjectManager $manager): void
+    {
 
         for ($e = 1; $e <= 10; $e++) {
             $entity = new Coupon();
@@ -51,7 +84,6 @@ class AppFixtures extends Fixture
             $manager->flush();
         }
 
-
-
     }
+
 }
