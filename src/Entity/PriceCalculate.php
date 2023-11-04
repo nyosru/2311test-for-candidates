@@ -41,14 +41,15 @@ class PriceCalculate
         return $this->id;
     }
 
-    public function getProduct(): ?string
+    public function getProduct(): ?int
     {
         return $this->product;
     }
 
-    public function setProduct( int $product): static
+    public function setProduct(?int $product): static
     {
         $this->product = $product;
+
         return $this;
     }
 
@@ -57,7 +58,7 @@ class PriceCalculate
         return $this->taxNumber;
     }
 
-    public function setTaxNumber(string $taxNumber): static
+    public function setTaxNumber(?string $taxNumber): static
     {
         $this->taxNumber = $taxNumber;
 
@@ -69,7 +70,7 @@ class PriceCalculate
         return $this->couponCode;
     }
 
-    public function setCouponCode(string $couponCode): static
+    public function setCouponCode(?string $couponCode): static
     {
         $this->couponCode = $couponCode;
 
