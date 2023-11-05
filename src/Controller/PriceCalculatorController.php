@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Coupon;
 use App\Entity\PriceCalculate;
-use Product;
+use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,33 +26,60 @@ class PriceCalculatorController extends AbstractController
     }
 
     #[Route('/calculate-price', methods: ['POST'])]
-    public function priceCals( Request $request , ValidatorInterface $validator, EntityManagerInterface $entityManager ): JsonResponse
+    public function priceCals(Request $request, ValidatorInterface $validator, EntityManagerInterface $entityManager): JsonResponse
     {
+
+        // тащим продукт
+        $product = $entityManager->getRepository(Product::class)->find($request->query->get('product'));
+        if (!$product)
+            throw $this->createNotFoundException('No product found for id ' . $request->query->get('product'));
+
+        // тащим купон если есть
+        if ($request->query->get('couponCode')) {
+            $coupon = $entityManager->getRepository(Coupon::class)->findOneBy(['kod' => $request->query->get('couponCode')]);
+            if (!$coupon)
+                throw $this->createNotFoundException('No cupon found');
+        }
+        // создаём обькект заказа и валидируем остальное
+
         // Создайте объект YourEntity и установите значения полей
         $yourEntity = new PriceCalculate();
-        $yourEntity->setProduct( $request->query->get('product'));
+        $yourEntity->setProduct($product);
         $yourEntity->setTaxNumber($request->query->get('taxNumber'));
-        $yourEntity->setCouponCode($request->query->get('couponCode'));
+//        $yourEntity->setCouponCode($request->query->get('couponCode'));
+        if (!empty($coupon))
+            $yourEntity->setCupon($coupon);
 
         // Выполните валидацию объекта
         $errors = $validator->validate($yourEntity);
 
         if (count($errors) > 0) {
             // Возвращайте ошибки в случае неверных данных
-            return $this->json(['errors' => (string) $errors], 500);
+            return $this->json(['errors' => (string)$errors], 500);
         }
-
-//        $entityManager = $this->getDoctrine()->getManager();
-//        $entityManager = $yourEntity->getDoctrine()->getManager();
 
         $entityManager->persist($yourEntity); // Помечаем сущность как "готовую к сохранению"
         $entityManager->flush(); // Сохраняем сущность в базу данных
-
+        // созданная моделька
         //dd($yourEntity);
 
+        $res = $this->orderCalculatePrice($yourEntity);
+
         return $this->json([
+            'res' => $res,
             'message' => 'Welcome to your new controller!',
             'path' => 'src/Controller/PriceCalculatorController.php',
         ]);
+
     }
+
+    function orderCalculatePrice(PriceCalculate $order): JsonResponse
+    {
+
+
+        dd([1, $order->coupon]);
+        dd([1, $order]);
+
+    }
+
 }

@@ -75,4 +75,16 @@ class Coupon
 
         return $this;
     }
+
+    public function getPriceCalculate(): ?PriceCalculate
+    {
+        return $this->priceCalculate;
+    }
+
+    public function setPriceCalculate(?PriceCalculate $priceCalculate): static
+    {
+        $this->priceCalculate = $priceCalculate;
+
+        return $this;
+    }
 }

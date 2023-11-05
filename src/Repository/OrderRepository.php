@@ -26,10 +26,10 @@ class OrderRepository extends ServiceEntityRepository
 //     */
 //    public function findByExampleField($value): array
 //    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
+//        return $this->createQueryBuilder('p')
+//            ->andWhere('p.exampleField = :val')
 //            ->setParameter('val', $value)
-//            ->orderBy('o.id', 'ASC')
+//            ->orderBy('p.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()
@@ -38,8 +38,8 @@ class OrderRepository extends ServiceEntityRepository
 
 //    public function findOneBySomeField($value): ?PriceCalculate
 //    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
+//        return $this->createQueryBuilder('p')
+//            ->andWhere('p.exampleField = :val')
 //            ->setParameter('val', $value)
 //            ->getQuery()
 //            ->getOneOrNullResult()
