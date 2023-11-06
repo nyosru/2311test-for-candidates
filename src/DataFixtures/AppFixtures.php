@@ -43,12 +43,15 @@ class AppFixtures extends Fixture
      */
     function fixNalog(ObjectManager $manager): void
     {
-
+        //DE XXX XXX XXX - для жителей Германии,
+        //IT XXX XXX XXX XX - для жителей Италии,
+        //GR XXX XXX XXX - для жителей Греции,
+        //FR YY XXX XXX XXX - для жителей Франции
         $new_nalog = [
-            ['Германия', 19, 'DE', '{.*}'],
-            ['Италия', 22, 'IT', '{.*}'],
-            ['Греция', 24, 'GE', '{.*}'],
-            ['Франция', 20, 'FR', '{.*}']
+            ['Германия', 19, 'DE', '^([a-zA-Z]{2})(\d{9})$'],
+            ['Италия', 22, 'IT', '^([a-zA-Z]{2})(\d{11})$'],
+            ['Греция', 24, 'GE', '^([a-zA-Z]{2})(\d{9})$'],
+            ['Франция', 20, 'FR', '^([a-zA-Z]{4})(\d{9})$']
         ];
         foreach ($new_nalog as $k) {
             $entity = new Nalogi();

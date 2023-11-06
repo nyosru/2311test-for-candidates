@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36bf46f89d2dd4627150c5d7b2910c85",
+    "content-hash": "7acc19dd5318b6fc165e41d6c09bcbaa",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -4070,6 +4070,37 @@
                 }
             ],
             "time": "2023-10-28T23:31:00+00:00"
+        },
+        {
+            "name": "systemeio/test-for-candidates",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/systemeio/test-for-candidates.git",
+                "reference": "947039daba39ff9ceebec78942438bfbc6cb53f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/systemeio/test-for-candidates/zipball/947039daba39ff9ceebec78942438bfbc6cb53f1",
+                "reference": "947039daba39ff9ceebec78942438bfbc6cb53f1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Systemeio\\TestForCandidates\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "This package can be used as requirement for your test tasks.",
+            "support": {
+                "issues": "https://github.com/systemeio/test-for-candidates/issues",
+                "source": "https://github.com/systemeio/test-for-candidates/tree/v1.0.2"
+            },
+            "time": "2023-09-25T08:19:03+00:00"
         }
     ],
     "packages-dev": [
