@@ -27,6 +27,8 @@ jobs:
             cd ${{ env.DIR }}
             git fetch --all
             git reset --hard ${{ env.GIT_BRANCH }}
+            docker exec 2311test composer i
+            docker exec 2311test npm i
 
 #  deploy_composer_stop:
 #    runs-on: ubuntu-latest
