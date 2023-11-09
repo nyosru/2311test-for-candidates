@@ -9,6 +9,7 @@ use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -18,6 +19,15 @@ use Systemeio\TestForCandidates\PaymentProcessor\PaypalPaymentProcessor;
 
 class PriceCalculatorController extends AbstractController
 {
+    #[Route('/', name: 'a')]
+    public function index2(): Response
+    {
+        return $this->render('index.html.twig', [
+//            'articles' => $articles
+        ]);
+//        return $this->renderView('');
+    }
+
     #[Route('/price/calculator', name: 'app_price_calculator')]
     public function index(): JsonResponse
     {

@@ -1,0 +1,90 @@
+{% extends('base.html.twig') %}
+
+{% block js %}
+    {#    <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js" ></script> #}
+    <script src="{{ asset('three.min.js') }}"></script>
+     <script src="{{ asset('bg-25.js') }}" ></script>
+{#    <script src="{{ asset('bg-3.js') }}"></script>#}
+    {# <script src="{{ asset('bg-2.js') }}" ></script> #}
+{% endblock %}
+
+{% block style %}
+    <style>
+        #bg-25 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right:0;
+            xwidth: 100%;
+            xheight: 520px;
+            xmargin: 20px 0;
+            z-index: 1;
+        }
+
+        #bg-3 {
+            width: 100%;
+            height: 520px;
+            margin: 20px 0;
+        }
+
+        #ss{
+            z-index: 7;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(255,255,255,0.9);
+            padding: 6px 20px;
+            margin: 0;
+            font-family: arial;
+        }
+        #ss2 {
+            z-index: 8;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-family: arial;
+            font-size: 1.5rem;
+            background-color: rgba(205,205,255,0.6);
+            padding: 6px 10px;
+        }    </style>
+
+{% endblock %}
+
+{% block body %}
+
+    <div id="ss2" >
+        <a href="https://php-cat.com" target="_blank" >php-cat.com это я, Сергей Бакланов из Тюмени</a>
+    </div>
+    <div id="ss" >
+        <h2>Тестовое задание № 2311.01</h2>
+        <p>Апи симфони, описание задания <a href="https://github.com/nyosru/2311test-for-candidates" target="_blank" >тут</a></p>
+        <p>Гит репозиторий задания -
+            <a href="https://github.com/nyosru/2311test-for-candidates" target="_blank" >
+            https://github.com/nyosru/2311test-for-candidates
+            </a>
+            описание как запустить в докере, прямо в read.me
+        </p>
+        <p>Гит репозиторий докера чтобы поднять на локальной машине или другом сервере -
+            <a href="https://github.com/nyosru/2311test-for-candidates-docker" target="_blank" >
+            https://github.com/nyosru/2311test-for-candidates-docker
+            </a>
+        </p>
+
+    </div>
+
+
+    {#    <script src="{{ asset('bg-25.js') }}" ></script> #}
+        <div id="bg-25"></div>
+{#    <div id="bg-3"></div>#}
+
+    {#    <div id="bg-2"></div> #}
+
+    {#    <div id="bg-2"><canvas width="848" height="520"></canvas></div> #}
+
+
+
+
+
+{% endblock %}
+
