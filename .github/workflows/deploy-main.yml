@@ -58,7 +58,7 @@ jobs:
      
   deploy_composer:
     runs-on: ubuntu-latest
-    needs: deploy_composer_stop
+#    needs: deploy_composer_stop
     steps:
       - uses: appleboy/ssh-action@master
         with:
